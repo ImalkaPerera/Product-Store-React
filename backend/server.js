@@ -1,7 +1,7 @@
 import express from 'express';
 import mongoose from 'mongoose';
 import { connectDB } from './config/db.js';
-import Product from '../models/Product.model.js';
+import Product from './models/Product.model.js';
 import router from './routes/product.route.js';
 
 
