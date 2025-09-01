@@ -1,7 +1,10 @@
 import express from 'express';
 import Product from '../models/Product.model.js';
 
+//use express router
 const router=express.Router();
+
+//create a product
 router.post("/products",async (req,res)=>{
     const product=req.body;
     if(!product.name || !product.price || !product.image){
@@ -14,6 +17,8 @@ router.post("/products",async (req,res)=>{
     }catch(error){
         res.status(500).json({success:false,message:"Server Error"});   
     }});
+
+//delete a product
 router.delete("/api/products/:id",async (req,res)=>{
     const {id}=req.params;
     try{
@@ -23,6 +28,7 @@ router.delete("/api/products/:id",async (req,res)=>{
         res.status(500).json({success:false,message:"Server Error"});
     }
 });
+//get all products
 router.get("/products",async(req,res)=>{
     try{
         const products=await Product.find({});
@@ -31,6 +37,7 @@ router.get("/products",async(req,res)=>{
         res.status(500).json({success:false,message:"Server Error"});
     }
 })
+//update a product
 router.put("/api/products/:id",async(req,res)=>{
     const {id}=req.params;
     const product=req.body;
